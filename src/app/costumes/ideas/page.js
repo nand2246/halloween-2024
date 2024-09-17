@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { fetchIdea } from "./actions";
 
 export default function Ideas() {
