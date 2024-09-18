@@ -1,5 +1,8 @@
 import NavBar from "@/components/navbar";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const fraunces = localFont({ src: "./fonts/Fraunces--latin_basic.woff2" });
 
 export const metadata = {
   title: "Create Next App",
@@ -9,9 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-background">
+      <body
+        className={`bg-background ${fraunces.className} font-thin text-2xl`}
+        style={{ fontVariationSettings: `"WONK" 1` }}
+      >
         <NavBar />
-        <div className="h-[calc(100vh-74px)]">{children}</div>
+        <div className="h-[calc(100vh-74px)] mt-[74px]">{children}</div>
       </body>
     </html>
   );
