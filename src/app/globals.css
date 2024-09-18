@@ -3,18 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --background: #e47700;
+  --background: #a23b11;
+  --background-secondary: #a5492b;
   --foreground: #171717;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Fraunces", serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.moon {
+  offset-path: ellipse(90% 30% at bottom center);
+}
+.bat-1 {
+  offset-path: ellipse(90% 30% at left center);
+}
+.bat-2 {
+  offset-path: ellipse(90% 30% at right center);
+}
+
+@screen md {
+  .moon {
+    offset-path: ellipse(80% 90% at bottom center);
+  }
+  .bat-1 {
+    offset-path: ellipse(20% 60% at left center);
+  }
+  .bat-2 {
+    offset-path: ellipse(20% 60% at right center);
   }
 }
