@@ -51,7 +51,7 @@ function DefaultBlock({ subtitle, text }) {
                   duration: 0.3,
                 },
               }}
-              className="fixed w-screen left-0 top-1/2 text-2xl md:text-5xl m-auto text-center"
+              className="fixed w-screen left-0 top-[50vh] text-2xl md:text-5xl m-auto text-center"
             >
               {text}
             </motion.div>
@@ -77,17 +77,17 @@ export default function Home() {
   const ghostPathX1 = useTransform(
     easedProgress,
     [3 / 7, 4 / 7],
-    ["calc(0vw)", "calc(50vw)"]
+    ["0vw", "50vw"]
   );
   const ghostPathY1 = useTransform(
     easedProgress,
     [3 / 7, 4 / 7],
-    ["calc(0vh + 0px)", "calc(-125vh - 230px)"]
+    ["calc(0vh + 0px)", "calc(-120vh - 230px)"]
   );
   const ghostPathX2 = useTransform(
     easedProgress,
     [4 / 7, 5 / 7],
-    ["0vw", "-120vw"]
+    ["0vw", "-100vw"]
   );
   const ghostPathY2 = useTransform(
     easedProgress,
@@ -96,8 +96,8 @@ export default function Home() {
   );
   const spiderPath = useTransform(
     easedProgress,
-    [5 / 7, 11 / 14, 13 / 14, 1],
-    ["0px", "420px", "420px", "0px"]
+    [5 / 7, 11 / 14, 13 / 14, 14 / 14],
+    ["0px", "360px", "360px", "0px"]
   );
 
   return (
@@ -121,7 +121,7 @@ export default function Home() {
       <motion.img
         src="./ghost-1.png"
         style={{ x: ghostPathX1, y: ghostPathY1 }}
-        className="fixed w-44 md:w-52 left-0 top-[100vh]"
+        className="fixed w-44 md:w-52 left-0 top-[120vh]"
       />
       <motion.img
         src="./ghost-2.png"
@@ -131,7 +131,7 @@ export default function Home() {
       <motion.img
         src="./spider.png"
         style={{ y: spiderPath }}
-        className="fixed w-36  md:w-36  left-[60%] top-[-400px]"
+        className="fixed w-28  md:w-36  left-[60%] top-[-400px]"
       />
       {/* title image */}
       <div className="container m-auto h-full flex justify-center items-center">
@@ -144,7 +144,7 @@ export default function Home() {
         />
       </div>
       {/* information blocks */}
-      <DefaultBlock subtitle={`when?`} text={`october 26, 8pm`} />
+      <DefaultBlock subtitle={`when?`} text={`october 26, 7pm`} />
       <DefaultBlock subtitle={`where?`} text={`our house`} />
       <DefaultBlock subtitle={`who?`} text={`you`} />
       <DefaultBlock subtitle={`what?`} text={`halloween party`} />
