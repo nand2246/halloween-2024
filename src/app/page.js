@@ -71,18 +71,18 @@ export default function Home() {
     restDelta: 0.0001,
   });
 
-  const moonPath = useTransform(easedProgress, [0, 1 / 7], ["60%", "90%"]);
-  const batPath1 = useTransform(easedProgress, [1 / 7, 2 / 7], ["24%", "-25%"]);
-  const batPath2 = useTransform(easedProgress, [2 / 7, 3 / 7], ["76%", "48%"]);
+  const moonPath = useTransform(easedProgress, [0, 1 / 7], ["50%", "100%"]);
+  const batPath1 = useTransform(easedProgress, [1 / 7, 2 / 7], ["30%", "-30%"]);
+  const batPath2 = useTransform(easedProgress, [2 / 7, 3 / 7], ["80%", "40%"]);
   const ghostPathX1 = useTransform(
     easedProgress,
     [3 / 7, 4 / 7],
-    ["0vw", "50vw"]
+    ["calc(0vw)", "calc(50vw)"]
   );
   const ghostPathY1 = useTransform(
     easedProgress,
     [3 / 7, 4 / 7],
-    ["0vh", "-125vh"]
+    ["calc(0vh + 0px)", "calc(-125vh - 230px)"]
   );
   const ghostPathX2 = useTransform(
     easedProgress,
@@ -92,7 +92,7 @@ export default function Home() {
   const ghostPathY2 = useTransform(
     easedProgress,
     [4 / 7, 5 / 7],
-    ["0vh", "-83vh"]
+    ["calc(0vh - 180px)", "calc(-70vh - 180px)"]
   );
   const spiderPath = useTransform(
     easedProgress,
