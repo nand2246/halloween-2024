@@ -21,13 +21,13 @@ body {
 }
 
 .moon {
-  offset-path: ellipse(90% 30% at bottom center);
+  offset-path: ellipse(90% 30% at center center);
 }
 .bat-1 {
-  offset-path: ellipse(90% 30% at left center);
+  offset-path: ellipse(20% 60% at left center);
 }
 .bat-2 {
-  offset-path: ellipse(90% 30% at right center);
+  offset-path: ellipse(60% 80% at 110% bottom);
 }
 
 @screen md {
@@ -38,6 +38,6 @@ body {
     offset-path: ellipse(20% 60% at left center);
   }
   .bat-2 {
-    offset-path: ellipse(20% 60% at right center);
+    offset-path: ellipse(60% 80% at 110% bottom);
   }
 }

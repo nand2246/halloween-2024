@@ -23,7 +23,7 @@ export default function Ideas() {
               initial="hide"
               animate="in"
               exit="out"
-              className="text-center m-auto p-5 rounded-md outline outline-black outline-2 w-fit bg-[#607044]"
+              className="text-3xl font-bold text-center m-auto p-5 rounded-md w-fit"
             >
               {idea ? `${idea}` : "click button to see a random costume idea"}
             </motion.div>
