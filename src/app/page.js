@@ -38,7 +38,7 @@ function InfoText({ subtitle, text }) {
                 transition: {
                   delay: 0.3,
                   type: "spring",
-                  duration: 1,
+                  duration: 0.8,
                   bounce: 0.6,
                 },
               }}
@@ -114,14 +114,14 @@ function AllInfo() {
               y: 0,
               transition: {
                 type: "spring",
-                duration: 1,
+                duration: 0.8,
                 bounce: 0.4,
               },
             }}
             exit={{
               y: 800,
               transition: {
-                duration: 1,
+                duration: 0.8,
               },
             }}
             className="fixed w-full bottom-0"
@@ -278,7 +278,7 @@ export default function Home() {
         <motion.img
           initial={{ opacity: "0%" }}
           whileInView={{ opacity: "100%" }}
-          transition={{ type: "spring", duration: 6 }}
+          transition={{ type: "linear", duration: 4 }}
           src="title.png"
           className="w-[90%] max-w-screen-md"
         />

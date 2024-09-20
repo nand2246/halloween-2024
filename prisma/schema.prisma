@@ -8,8 +8,11 @@ datasource db {
     directUrl = env("DIRECT_URL")
 }
 
-model Volunteer {
-    id         String  @id @default(uuid())
-    name       String?
-    ingredient String  @unique
+model Ingredient {
+    id        String  @id @default(uuid())
+    name      String  @unique
+    color     String
+    link      String?
+    amount    String
+    volunteer String?
 }

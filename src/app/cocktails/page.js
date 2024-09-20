@@ -1,7 +1,44 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { fetchCocktails } from "./actions";
+import { useState } from "react";
+
+const cocktails = [
+  {
+    name: "jack o' spice",
+    ingredients: ["vodka", "pumpkin spice creamer", "kahlúa", "graham cracker"],
+    color: "#eaac5b",
+  },
+  {
+    name: "blood shot",
+    ingredients: ["whisky", "sour apple schnapps", "cranberry juice"],
+    color: "#98292e",
+  },
+  {
+    name: "witches brew",
+    ingredients: [
+      "vodka",
+      "limes",
+      "seltzer water",
+      "midori melon liqueur",
+      "coconut water",
+    ],
+    color: "#8ace00",
+  },
+  {
+    name: "black widow",
+    ingredients: [
+      "blackberries",
+      "rosemary",
+      "lemon",
+      "honey",
+      "tequila",
+      "orange",
+      "sparkling water",
+    ],
+    color: "#2a1115",
+    textColor: "white",
+  },
+];
 
 function CocktailCard({ name, ingredients, color, textColor, index }) {
   const [show, setShow] = useState(false);
@@ -22,7 +59,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
       </div>
       <button
         onClick={() => setShow(!show)}
-        className="outline outline-2 rounded-md px-2 py-1 m-2"
+        className="outline outline-2 rounded-md px-2 py-1.5 m-2"
       >
         see details
       </button>
@@ -33,8 +70,8 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
             animate={{
               height: "fit-content",
               transition: {
-                type: "spring",
-                duration: 0.5,
+                type: "linear",
+                duration: 0.3,
                 bounce: 0.5,
               },
             }}
@@ -52,7 +89,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
                 opacity: 1,
                 transition: {
                   type: "linear",
-                  delay: 0.5,
+                  delay: 0.3,
                   duration: 0.3,
                 },
               }}
@@ -74,7 +111,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
                   opacity: 1,
                   transition: {
                     type: "linear",
-                    delay: 0.8 + 0.1 * index,
+                    delay: 0.4 + 0.1 * index,
                     duration: 0.3,
                   },
                 }}
@@ -97,15 +134,6 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
 }
 
 export default function Cocktails() {
-  const [cocktails, setCocktails] = useState([]);
-
-  useEffect(() => {
-    fetchCocktails().then((res) => {
-      setCocktails(res);
-    }),
-      [];
-  });
-
   return (
     <div className="static pt-3 md:pt-6 mx-3 md:mx-auto max-w-screen-md h-full">
       {cocktails.length > 0 &&

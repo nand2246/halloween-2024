@@ -14,14 +14,14 @@ export default function NavBar() {
     setIsMenuOpen(false);
   }
 
-  function NavItem({ path, count, children }) {
+  function NavItem({ path, index, children }) {
     return (
       <motion.button
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
           transition: {
-            delay: count ? 0.5 + count * 0.1 : 0,
+            delay: index >= 0 ? 0.3 + index * 0.1 : 0,
             type: "linear",
             duration: 0.5,
           },
@@ -59,7 +59,7 @@ export default function NavBar() {
                 rotate: isMenuOpen ? `90deg` : `0deg`,
                 transition: {
                   type: "linear",
-                  duration: 0.5,
+                  duration: 0.3,
                 },
               }}
               xmlns="http://www.w3.org/2000/svg"
@@ -68,9 +68,9 @@ export default function NavBar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="icon icon-tabler icons-tabler-outline icon-tabler-menu"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -88,12 +88,12 @@ export default function NavBar() {
               opacity: 1,
               transition: {
                 type: "linear",
-                duration: 1,
+                duration: 0.5,
               },
             }}
             className="font-normal max-[320px]:text-sm max-[350px]:text-base max-[400px]:text-lg max-sm:text-xl sm:text-2xl"
           >
-            selinand&#39;s halloween 2024
+            selinand&apos;s halloween 2024
           </motion.p>
         </div>
 
@@ -121,7 +121,7 @@ export default function NavBar() {
               height: "auto",
               transition: {
                 type: "linear",
-                duration: 0.5,
+                duration: 0.3,
               },
             }}
             exit={{
@@ -134,16 +134,16 @@ export default function NavBar() {
             className="flex left-3 right-3 mt-3 rounded-md outline outline-black outline-2 bg-background-secondary z-50"
           >
             <div className={`flex flex-col w-full text-center`}>
-              <NavItem count={1} path="/">
+              <NavItem index={0} path="/">
                 home
               </NavItem>
-              <NavItem count={2} path="/cocktails">
+              <NavItem index={1} path="/cocktails">
                 cocktails
               </NavItem>
-              <NavItem count={3} path="/volunteer">
+              <NavItem index={2} path="/volunteer">
                 volunteer
               </NavItem>
-              <NavItem count={4} path="/costumes">
+              <NavItem index={3} path="/costumes">
                 costume ideas
               </NavItem>
             </div>
