@@ -25,7 +25,7 @@ function InfoText({ subtitle, text }) {
   const isVisible = useInView(ref, { amount: 0.5 });
 
   return (
-    <div ref={ref} className="z-50 h-screen">
+    <div ref={ref} className="z-40 h-screen">
       <AnimatePresence>
         {isVisible && (
           <>
@@ -78,7 +78,7 @@ function AllInfo() {
   const isVisible = useInView(ref, { amount: 0.8 });
 
   return (
-    <AnimatePresence>
+    <>
       <div
         ref={ref}
         className="h-[calc(100svh-75px)] lg:h-[calc(100svh-100px)]"
@@ -101,52 +101,54 @@ function AllInfo() {
           ))}
         </div>
       </div>
-      {isVisible && (
-        <motion.div
-          initial={{ y: 800 }}
-          animate={{
-            y: 0,
-            transition: {
-              type: "spring",
-              duration: 1,
-              bounce: 0.4,
-            },
-          }}
-          exit={{
-            y: 800,
-            transition: {
-              duration: 1,
-            },
-          }}
-          className="fixed w-full bottom-0"
-        >
-          <img
-            src="./bunny.png"
-            className="fixed bottom-0 right-[10vw] lg:right-1 w-[25vw] z-50"
-          />
-          <img
-            src="./cat.png"
-            className="fixed bottom-0 left-[5vw] lg:left-1 w-[33vw] z-50"
-          />
-          <img
-            src="./gourd.png"
-            className="fixed bottom-0 right-1 lg:left-[25vw] w-[20vw] lg:w-[15vw] z-40"
-          />
-          <img
-            src="./pumpkin.png"
-            className="fixed bottom-0 left-1 lg:left-6 w-[20vw] lg:w-[15vw] z-40"
-          />
-          <img
-            src="./skull.png"
-            className="fixed bottom-0 left-1/2 lg:left-[72vw] w-[8vw] z-30"
-          />
-          <img
-            src="./tombstone.png"
-            className="fixed bottom-0 mx-auto inset-x-0 lg:left-[40vw] w-[20vw]"
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ y: 800 }}
+            animate={{
+              y: 0,
+              transition: {
+                type: "spring",
+                duration: 1,
+                bounce: 0.4,
+              },
+            }}
+            exit={{
+              y: 800,
+              transition: {
+                duration: 1,
+              },
+            }}
+            className="fixed w-full bottom-0"
+          >
+            <img
+              src="./bunny.png"
+              className="fixed bottom-0 right-[10vw] lg:right-1 w-[25vw] z-40"
+            />
+            <img
+              src="./cat.png"
+              className="fixed bottom-0 left-[5vw] lg:left-1 w-[33vw] z-40"
+            />
+            <img
+              src="./gourd.png"
+              className="fixed bottom-0 right-1 lg:left-[25vw] w-[20vw] lg:w-[15vw] z-30"
+            />
+            <img
+              src="./pumpkin.png"
+              className="fixed bottom-0 left-1 lg:left-6 w-[20vw] lg:w-[15vw] z-30"
+            />
+            <img
+              src="./skull.png"
+              className="fixed bottom-0 left-1/2 lg:left-[72vw] w-[8vw] z-20"
+            />
+            <img
+              src="./tombstone.png"
+              className="fixed bottom-0 mx-auto inset-x-0 lg:left-[40vw] w-[20vw]"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
