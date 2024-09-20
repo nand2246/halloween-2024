@@ -13,30 +13,28 @@ export default function Ideas() {
   }
 
   return (
-    <div className="flex h-full">
-      <div className="flex-1 m-auto">
-        <div className="h-28">
-          <AnimatePresence>
-            <motion.div
-              key={count}
-              variants={variants}
-              initial="hide"
-              animate="in"
-              exit="out"
-              className="text-3xl font-bold text-center m-auto p-5 rounded-md w-fit"
-            >
-              {idea ? `${idea}` : "click button to see a random costume idea"}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        <div className="text-center">
-          <button
-            className="rounded-md outline outline-black outline-2 p-3"
-            onClick={handleNewIdea}
+    <div className="flex flex-col h-full">
+      <div className="relative flex-1 h-28 content-end">
+        <AnimatePresence>
+          <motion.div
+            key={count}
+            variants={variants}
+            initial="hide"
+            animate="in"
+            exit="out"
+            className="absolute w-screen bottom-0 text-3xl font-bold text-center mb-10"
           >
-            new idea
-          </button>
-        </div>
+            {idea ? `${idea}` : "click button to see a random costume idea"}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className="flex-1 text-center">
+        <button
+          className="rounded-md outline outline-black outline-2 p-3"
+          onClick={handleNewIdea}
+        >
+          new idea
+        </button>
       </div>
     </div>
   );
