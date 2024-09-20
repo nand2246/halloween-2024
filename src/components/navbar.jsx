@@ -11,6 +11,7 @@ export default function NavBar() {
 
   function handleNav(pageName) {
     router.push(pageName);
+    setIsMenuOpen(false);
   }
 
   function NavItem({ path, count, children }) {
@@ -42,8 +43,8 @@ export default function NavBar() {
   }
 
   return (
-    <>
-      <div className="fixed flex top-3 left-3 right-3 p-2 rounded-md outline outline-black outline-2 bg-background-secondary z-50">
+    <div className="fixed top-3 left-3 right-3 z-50">
+      <div className="flex flex-wrap p-2 rounded-md outline outline-black outline-2 bg-background-secondary">
         {/* mobile menu button */}
         <div className="flex-1 md:hidden max-w-12">
           <button
@@ -70,7 +71,7 @@ export default function NavBar() {
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-menu"
+              className="icon icon-tabler icons-tabler-outline icon-tabler-menu"
             >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M4 8l16 0" />
@@ -130,7 +131,7 @@ export default function NavBar() {
                 duration: 0.3,
               },
             }}
-            className="fixed flex top-13 left-3 right-3 rounded-md outline outline-black outline-2 bg-background-secondary z-50"
+            className="flex left-3 right-3 mt-3 rounded-md outline outline-black outline-2 bg-background-secondary z-50"
           >
             <div className={`flex flex-col w-full text-center`}>
               <NavItem count={1} path="/">
@@ -149,6 +150,6 @@ export default function NavBar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }

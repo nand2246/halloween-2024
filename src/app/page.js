@@ -7,6 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 
 const partyData = [
@@ -83,8 +84,12 @@ function AllInfo() {
         ref={ref}
         className="h-[calc(100svh-75px)] lg:h-[calc(100svh-100px)]"
       >
-        <img
-          src="title.png"
+        <Image
+          src="/title.png"
+          alt="title image"
+          width={0}
+          height={0}
+          sizes="100vw"
           className="max-h-[0vh] lg:max-h-[30vh] max-w-[90vw] m-auto"
         />
         <div className="flex flex-col h-[65%] mb-[35%]">
@@ -121,28 +126,52 @@ function AllInfo() {
             }}
             className="fixed w-full bottom-0"
           >
-            <img
-              src="./bunny.png"
+            <Image
+              src="/bunny.png"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
               className="fixed bottom-0 right-[10vw] lg:right-1 w-[25vw] z-40"
             />
-            <img
-              src="./cat.png"
+            <Image
+              src="/cat.png"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
               className="fixed bottom-0 left-[5vw] lg:left-1 w-[33vw] z-40"
             />
-            <img
-              src="./gourd.png"
+            <Image
+              src="/gourd.png"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
               className="fixed bottom-0 right-1 lg:left-[25vw] w-[20vw] lg:w-[15vw] z-30"
             />
-            <img
-              src="./pumpkin.png"
+            <Image
+              src="/pumpkin.png"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
               className="fixed bottom-0 left-1 lg:left-6 w-[20vw] lg:w-[15vw] z-30"
             />
-            <img
-              src="./skull.png"
+            <Image
+              src="/skull.png"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
               className="fixed bottom-0 left-1/2 lg:left-[72vw] w-[8vw] z-20"
             />
-            <img
-              src="./tombstone.png"
+            <Image
+              src="/tombstone.png"
+              alt=""
+              width={0}
+              height={0}
+              sizes="100vw"
               className="fixed bottom-0 mx-auto inset-x-0 lg:left-[40vw] w-[20vw]"
             />
           </motion.div>
@@ -174,7 +203,7 @@ export default function Home() {
       },
     },
     {
-      src: "./bat-1.png",
+      src: "bat-1.png",
       classes: "w-32 lg:w-36 bat-1",
       animate: {
         offsetDistance: useTransform(
@@ -185,7 +214,7 @@ export default function Home() {
       },
     },
     {
-      src: "./bat-2.png",
+      src: "bat-2.png",
       classes: "w-28 lg:w-32 bat-2",
       animate: {
         offsetDistance: useTransform(
@@ -196,7 +225,7 @@ export default function Home() {
       },
     },
     {
-      src: "./ghost-1.png",
+      src: "ghost-1.png",
       classes: "w-44 lg:w-52 left-0 top-[120vh]",
       animate: {
         x: useTransform(easedProgress, [3 / 7, 4 / 7], ["0vw", "50vw"]),
@@ -208,7 +237,7 @@ export default function Home() {
       },
     },
     {
-      src: "./ghost-2.png",
+      src: "ghost-2.png",
       classes: "w-56 lg:w-64 left-[100vw] top-[70vh]",
       animate: {
         x: useTransform(easedProgress, [4 / 7, 5 / 7], ["0vw", "-100vw"]),
@@ -220,7 +249,7 @@ export default function Home() {
       },
     },
     {
-      src: "./spider.png",
+      src: "spider.png",
       classes: "w-28  lg:w-36  left-[60%] top-[-370px]",
       animate: {
         y: useTransform(
@@ -245,7 +274,7 @@ export default function Home() {
       ))}
 
       {/* title image */}
-      <div className="h-full flex justify-center items-center">
+      <div className="h-[calc(100vh-74px)] flex justify-center items-center">
         <motion.img
           initial={{ opacity: "0%" }}
           whileInView={{ opacity: "100%" }}

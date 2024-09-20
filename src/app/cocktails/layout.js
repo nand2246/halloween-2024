@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "costumes",
+  title: "cocktails",
 };
 
 export default function Layout({ children }) {

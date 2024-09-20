@@ -3,7 +3,7 @@ import { useState } from "react";
 import { fetchIdea } from "./actions";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function Ideas() {
+export default function Costumes() {
   let [idea, setIdea] = useState();
   let [count, setCount] = useState(true);
 
@@ -13,7 +13,7 @@ export default function Ideas() {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-[calc(100vh-74px)]">
       <div className="relative flex-1 h-28 content-end">
         <AnimatePresence>
           <motion.div
