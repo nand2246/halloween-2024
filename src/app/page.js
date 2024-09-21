@@ -276,9 +276,9 @@ export default function Home() {
       {/* title image */}
       <div className="h-[calc(100vh-74px)] flex justify-center items-center">
         <motion.img
-          initial={{ opacity: "0%" }}
-          whileInView={{ opacity: "100%" }}
-          transition={{ type: "linear", duration: 4 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ type: "spring", bounce: 0.5, duration: 1.5 }}
           src="title.png"
           className="w-[90%] max-w-screen-md z-40"
         />

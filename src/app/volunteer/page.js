@@ -12,6 +12,7 @@ function ClaimedIngredientCard({
   name,
   volunteer,
   color,
+  textColor,
   index,
   handleUnclaim,
 }) {
@@ -22,7 +23,7 @@ function ClaimedIngredientCard({
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.1 * index } }}
+        animate={{ opacity: 1, transition: { delay: 0.3 + 0.1 * index } }}
         exit={{ opacity: 0 }}
         className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
         style={{
@@ -146,7 +147,14 @@ function ClaimedIngredientCard({
   );
 }
 
-function UnclaimedIngredientCard({ id, name, color, index, handleClaim }) {
+function UnclaimedIngredientCard({
+  id,
+  name,
+  color,
+  textColor,
+  index,
+  handleClaim,
+}) {
   const [expanded, setExpanded] = useState(false);
   const [volunteerInput, setVolunteerInput] = useState("");
   const [claimed, setClaimed] = useState(false);
@@ -154,10 +162,10 @@ function UnclaimedIngredientCard({ id, name, color, index, handleClaim }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.1 * index } }}
+      animate={{ opacity: 1, transition: { delay: 0.3 + 0.1 * index } }}
     >
       <div
-        className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
+        className="w-full mb-8 p-4 outline outline-2 rounded-md text-center"
         style={{
           backgroundColor: color,
         }}
@@ -303,67 +311,91 @@ export default function Volunteer() {
 
   return (
     <div className="static pt-3 md:pt-6 mx-3 md:mx-auto max-w-screen-md">
-      {unclaimedIngredients && (
-        <>
-          <h1 className="w-full text-center mb-10 text-5xl font-bold">
-            unclaimed:
-          </h1>
-          {unclaimedIngredients.length > 0 ? (
-            unclaimedIngredients.map((ingredient, index) => (
-              <UnclaimedIngredientCard
-                key={ingredient.name}
-                id={ingredient.id}
-                name={ingredient.name}
-                color={ingredient.color}
-                index={index + 1}
-                handleClaim={() => setUpdateClaimedList(updateClaimedList + 1)}
-              />
-            ))
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.1 } }}
-              className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
-            >
-              <div className="text-center text-4xl sm:text-5xl my-8 font-normal">
-                {`everything has been claimed :)`}
-              </div>
-            </motion.div>
+      <AnimatePresence>
+        {!unclaimedIngredients && !claimedIngredients && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.1 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+          >
+            <p className="w-full text-center p-10 text-5xl font-bold">
+              loading...
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {unclaimedIngredients || claimedIngredients ? (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.3 } }}
+        >
+          {unclaimedIngredients && (
+            <>
+              <h1 className="w-full text-center mb-10 text-5xl font-bold">
+                unclaimed:
+              </h1>
+              {unclaimedIngredients.length > 0 ? (
+                unclaimedIngredients.map((ingredient, index) => (
+                  <UnclaimedIngredientCard
+                    key={ingredient.name}
+                    id={ingredient.id}
+                    name={ingredient.name}
+                    color={ingredient.color}
+                    index={index + 1}
+                    handleClaim={() =>
+                      setUpdateClaimedList(updateClaimedList + 1)
+                    }
+                  />
+                ))
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { delay: 0.1 } }}
+                  className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
+                >
+                  <div className="text-center text-4xl sm:text-5xl my-8 font-normal">
+                    {`everything has been claimed :)`}
+                  </div>
+                </motion.div>
+              )}
+            </>
           )}
-        </>
-      )}
 
-      {claimedIngredients && (
-        <>
-          <h1 className="w-full text-center mb-10 text-5xl font-bold">
-            claimed:
-          </h1>
-          {claimedIngredients.length > 0 ? (
-            claimedIngredients.map((ingredient, index) => (
-              <ClaimedIngredientCard
-                key={ingredient.name}
-                id={ingredient.id}
-                name={ingredient.name}
-                volunteer={ingredient.volunteer}
-                color={ingredient.color}
-                index={index + 1}
-                handleUnclaim={() =>
-                  setUpdateUnclaimedList(updateUnclaimedList + 1)
-                }
-              />
-            ))
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.1 } }}
-              className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
-            >
-              <div className="text-center text-4xl sm:text-5xl my-8 font-normal">
-                {`nothing has been claimed :(`}
-              </div>
-            </motion.div>
+          {claimedIngredients && (
+            <>
+              <h1 className="w-full text-center mb-10 text-5xl font-bold">
+                claimed:
+              </h1>
+              {claimedIngredients.length > 0 ? (
+                claimedIngredients.map((ingredient, index) => (
+                  <ClaimedIngredientCard
+                    key={ingredient.name}
+                    id={ingredient.id}
+                    name={ingredient.name}
+                    volunteer={ingredient.volunteer}
+                    color={ingredient.color}
+                    index={index + 1}
+                    handleUnclaim={() =>
+                      setUpdateUnclaimedList(updateUnclaimedList + 1)
+                    }
+                  />
+                ))
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { delay: 0.1 } }}
+                  className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
+                >
+                  <div className="text-center text-4xl sm:text-5xl my-8 font-normal">
+                    {`nothing has been claimed :(`}
+                  </div>
+                </motion.div>
+              )}
+            </>
           )}
-        </>
+        </motion.div>
+      ) : (
+        <></>
       )}
     </div>
   );

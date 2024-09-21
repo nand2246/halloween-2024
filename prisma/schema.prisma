@@ -12,6 +12,7 @@ model Ingredient {
     id        String  @id @default(uuid())
     name      String  @unique
     color     String
+    textColor String?
     link      String?
     amount    String
     volunteer String?
