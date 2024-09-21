@@ -46,8 +46,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1, transition: { delay: 0.2 * index } }}
-      animate={{ opacity: 1, transition: { delay: 0.2 * index } }}
+      animate={{ opacity: 1, transition: { delay: 0.1 * index } }}
       className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
       style={{
         backgroundColor: color,
@@ -135,7 +134,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
 
 export default function Cocktails() {
   return (
-    <div className="static pt-3 md:pt-6 mx-3 md:mx-auto max-w-screen-md h-full">
+    <div className="pb-10 pt-3 md:pt-6 mx-3 md:mx-auto max-w-screen-md">
       {cocktails.length > 0 &&
         cocktails.map((cocktail, index) => (
           <CocktailCard
@@ -144,7 +143,7 @@ export default function Cocktails() {
             ingredients={cocktail.ingredients}
             color={cocktail.color}
             textColor={cocktail.textColor ? cocktail.textColor : undefined}
-            index={index}
+            index={index + 1}
           />
         ))}
     </div>

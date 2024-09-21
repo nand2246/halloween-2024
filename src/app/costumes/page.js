@@ -42,7 +42,7 @@ const costume_ideas = [
   "kendrick and drake",
   "drake and millie",
   "glinda and elphaba (wicked)",
-  "saltbrun",
+  "saltburn",
   "avatar ",
   "percy jackson ",
   "kyle + rock wall",
@@ -70,7 +70,7 @@ const costume_ideas = [
   "hotel translvania",
 ];
 
-async function fetchIdea() {
+function fetchIdea() {
   return costume_ideas[Math.floor(Math.random() * costume_ideas.length)];
 }
 
@@ -78,9 +78,9 @@ export default function Costumes() {
   let [idea, setIdea] = useState();
   let [count, setCount] = useState(true);
 
-  async function handleNewIdea() {
+  function handleNewIdea() {
     setCount(count + 1);
-    setIdea(await fetchIdea());
+    setIdea(fetchIdea());
   }
 
   return (

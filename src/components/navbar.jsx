@@ -33,7 +33,7 @@ export default function NavBar() {
           },
         }}
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.8 }}
+        whileTap={{ scale: 0.9 }}
         className="md:text-xl lg:text-2xl mx-1 p-1"
         onClick={() => handleNav(path)}
       >
