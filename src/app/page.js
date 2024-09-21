@@ -280,7 +280,7 @@ export default function Home() {
           whileInView={{ opacity: "100%" }}
           transition={{ type: "linear", duration: 4 }}
           src="title.png"
-          className="w-[90%] max-w-screen-md"
+          className="w-[90%] max-w-screen-md z-40"
         />
       </div>
 
