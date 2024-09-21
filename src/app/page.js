@@ -129,6 +129,7 @@ function AllInfo() {
             <Image
               src="/bunny.png"
               alt=""
+              priority={true}
               width={0}
               height={0}
               sizes="100vw"
@@ -137,6 +138,7 @@ function AllInfo() {
             <Image
               src="/cat.png"
               alt=""
+              priority={true}
               width={0}
               height={0}
               sizes="100vw"
@@ -145,6 +147,7 @@ function AllInfo() {
             <Image
               src="/gourd.png"
               alt=""
+              priority={true}
               width={0}
               height={0}
               sizes="100vw"
@@ -153,6 +156,7 @@ function AllInfo() {
             <Image
               src="/pumpkin.png"
               alt=""
+              priority={true}
               width={0}
               height={0}
               sizes="100vw"
@@ -161,6 +165,7 @@ function AllInfo() {
             <Image
               src="/skull.png"
               alt=""
+              priority={true}
               width={0}
               height={0}
               sizes="100vw"
@@ -169,6 +174,7 @@ function AllInfo() {
             <Image
               src="/tombstone.png"
               alt=""
+              priority={true}
               width={0}
               height={0}
               sizes="100vw"
