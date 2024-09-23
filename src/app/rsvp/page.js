@@ -116,7 +116,9 @@ export default function RSVP() {
                 </motion.div>
               )}
               {isFormSubmitted && (
-                <div className="py-10 px-5">you have successfully rsvp'd</div>
+                <div className="py-10 px-5">
+                  you have successfully rsvp&apos;d
+                </div>
               )}
             </motion.div>
           </motion.div>
