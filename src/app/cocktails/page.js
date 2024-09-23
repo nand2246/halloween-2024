@@ -134,7 +134,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
 
 export default function Cocktails() {
   return (
-    <div className="pb-10 pt-3 md:pt-6 mx-3 md:mx-auto max-w-screen-md">
+    <div className="pt-3 md:pt-6 mx-3 md:mx-auto max-w-screen-md">
       {cocktails.length > 0 &&
         cocktails.map((cocktail, index) => (
           <CocktailCard

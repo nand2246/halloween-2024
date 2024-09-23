@@ -17,3 +17,9 @@ model Ingredient {
     amount    String
     volunteer String?
 }
+
+model Attendee {
+    id    String @id @default(uuid())
+    name  String
+    email String @unique
+}

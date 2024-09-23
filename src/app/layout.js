@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         style={{ fontVariationSettings: `"WONK" 1` }}
       >
         <NavBar />
-        <div className="mt-[74px]">{children}</div>
+        <div className="mt-3 pb-8">{children}</div>
       </body>
     </html>
   );

@@ -1,22 +1,24 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
+
+const links = [
+  { path: "/", text: "home" },
+  { path: "/cocktails", text: "cocktails" },
+  { path: "/volunteer", text: "volunteer" },
+  { path: "/costumes", text: "costume ideas" },
+  { path: "/rsvp", text: "rsvp" },
+];
 
 export default function NavBar() {
-  const router = useRouter();
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  function handleNav(pageName) {
-    router.push(pageName);
-    setIsMenuOpen(false);
-  }
-
-  function NavItem({ path, index, children }) {
-    return (
+  function NavItems() {
+    return links.map((link, index) => (
       <motion.button
+        key={link.text}
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
@@ -34,16 +36,15 @@ export default function NavBar() {
         }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="md:text-xl lg:text-2xl mx-1 p-1"
-        onClick={() => handleNav(path)}
+        className="md:text-base lg:text-2xl mx-1 p-1"
       >
-        {children}
+        <Link href={link.path}>{link.text}</Link>
       </motion.button>
-    );
+    ));
   }
 
   return (
-    <div className="fixed top-3 left-3 right-3 z-50">
+    <div className="sticky top-3 w-full px-3 z-50">
       <div className="flex flex-wrap p-2 rounded-md outline outline-black outline-2 bg-background-secondary">
         {/* mobile menu button */}
         <div className="flex-1 md:hidden max-w-12">
@@ -99,10 +100,7 @@ export default function NavBar() {
 
         {/* nav menu buttons */}
         <div className="flex-1 hidden md:block text-center md:text-right xl:text-center">
-          <NavItem path="/">home</NavItem>
-          <NavItem path="/cocktails">cocktails</NavItem>
-          <NavItem path="/volunteer">volunteer</NavItem>
-          <NavItem path="/costumes">costume ideas</NavItem>
+          <NavItems />
         </div>
 
         {/* third menu spacer for xl */}
@@ -131,21 +129,10 @@ export default function NavBar() {
                 duration: 0.3,
               },
             }}
-            className="flex left-3 right-3 mt-3 rounded-md outline outline-black outline-2 bg-background-secondary z-50"
+            className="fixed flex top-16 left-3 right-3 mt-3 rounded-md outline outline-black outline-2 bg-background-secondary z-50"
           >
             <div className={`flex flex-col w-full text-center`}>
-              <NavItem index={0} path="/">
-                home
-              </NavItem>
-              <NavItem index={1} path="/cocktails">
-                cocktails
-              </NavItem>
-              <NavItem index={2} path="/volunteer">
-                volunteer
-              </NavItem>
-              <NavItem index={3} path="/costumes">
-                costume ideas
-              </NavItem>
+              <NavItems />
             </div>
           </motion.div>
         )}

@@ -93,7 +93,7 @@ export default function Costumes() {
             initial="hide"
             animate="in"
             exit="out"
-            className="absolute w-screen bottom-0 text-3xl font-bold text-center mb-10"
+            className="absolute w-full bottom-0 text-3xl font-bold text-center mb-10"
           >
             {idea ? `${idea}` : "click button to see a random costume idea"}
           </motion.div>

@@ -82,7 +82,7 @@ function AllInfo() {
     <>
       <div
         ref={ref}
-        className="h-[calc(100svh-75px)] lg:h-[calc(100svh-100px)]"
+        className="pt-8 h-[calc(100svh-75px)] lg:h-[calc(100svh-100px)]"
       >
         <Image
           src="/title.png"
@@ -215,7 +215,7 @@ export default function Home() {
         offsetDistance: useTransform(
           easedProgress,
           [1 / 7, 2 / 7],
-          ["30%", "-30%"]
+          ["30%", "-31%"]
         ),
       },
     },

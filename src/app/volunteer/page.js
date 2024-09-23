@@ -20,130 +20,127 @@ function ClaimedIngredientCard({
   const [claimed, setClaimed] = useState(true);
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.3 + 0.1 * index } }}
-        exit={{ opacity: 0 }}
-        className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
-        style={{
-          backgroundColor: color,
-        }}
-      >
-        {/* sign up information/button */}
-        <AnimatePresence>
-          {claimed && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { delay: 0.3 + 0.1 * index } }}
+      className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
+      style={{
+        backgroundColor: color,
+      }}
+    >
+      {/* sign up information/button */}
+      <AnimatePresence>
+        {claimed && (
+          <motion.div
+            initial={{ height: "auto" }}
+            exit={{
+              height: 0,
+              transition: { delay: 0.3, duration: 0.5 },
+            }}
+          >
             <motion.div
-              initial={{ height: "auto" }}
+              initial={{ opacity: 1 }}
               exit={{
-                height: 0,
-                transition: { delay: 0.3, duration: 0.5 },
+                opacity: 0,
+                transition: { duration: 0.3 },
               }}
             >
-              <motion.div
-                initial={{ opacity: 1 }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.3 },
-                }}
+              <div className="text-center text-4xl sm:text-5xl py-8 font-normal">
+                {name}
+              </div>
+              <h2 className="mb-4">
+                {volunteer} is bringing {name}
+              </h2>
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="outline outline-2 rounded-md px-2 py-1.5 m-2"
               >
-                <div className="text-center text-4xl sm:text-5xl py-8 font-normal">
-                  {name}
-                </div>
-                <h2 className="mb-4">
-                  {volunteer} is bringing {name}
-                </h2>
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className="outline outline-2 rounded-md px-2 py-1.5 m-2"
-                >
-                  i am {volunteer}
-                </button>
-              </motion.div>
+                i am {volunteer}
+              </button>
             </motion.div>
-          )}
-        </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        {/* post unclaim text */}
-        {!claimed && (
+      {/* post unclaim text */}
+      {!claimed && (
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{
+            height: "auto",
+            transition: { type: "linear", delay: 1, duration: 0.5 },
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { type: "linear", delay: 1.5, duration: 0.3 },
+            }}
+            className="text-center"
+          >
+            <div className="text-4xl sm:text-5xl py-8 font-normal">
+              you unclaimed {name}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* expanded section */}
+      <AnimatePresence>
+        {expanded && (
           <motion.div
             initial={{ height: 0 }}
             animate={{
-              height: "auto",
-              transition: { type: "linear", delay: 1, duration: 0.5 },
+              height: "fit-content",
+              transition: {
+                type: "linear",
+                duration: 0.3,
+                bounce: 0.5,
+              },
+            }}
+            exit={{
+              height: 0,
+              transition: {
+                delay: 0.3,
+                duration: 0.3,
+              },
             }}
           >
             <motion.div
               initial={{ opacity: 0 }}
               animate={{
                 opacity: 1,
-                transition: { type: "linear", delay: 1.5, duration: 0.3 },
-              }}
-              className="text-center"
-            >
-              <div className="text-4xl sm:text-5xl py-8 font-normal">
-                you unclaimed {name}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {/* expanded section */}
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{
-                height: "fit-content",
                 transition: {
+                  delay: 0.3,
                   type: "linear",
                   duration: 0.3,
-                  bounce: 0.5,
                 },
               }}
               exit={{
-                height: 0,
+                opacity: 0,
                 transition: {
-                  delay: 0.3,
                   duration: 0.3,
                 },
               }}
+              className="pt-6"
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: {
-                    delay: 0.3,
-                    type: "linear",
-                    duration: 0.3,
-                  },
+              <button
+                onClick={() => {
+                  setVolunteer(id, null);
+                  setExpanded(false);
+                  setClaimed(false);
+                  handleUnclaim();
                 }}
-                exit={{
-                  opacity: 0,
-                  transition: {
-                    duration: 0.3,
-                  },
-                }}
-                className="pt-6"
+                className="outline outline-2 shadow-md rounded-md px-2 py-1.5 m-2"
               >
-                <button
-                  onClick={() => {
-                    setVolunteer(id, null);
-                    setExpanded(false);
-                    setClaimed(false);
-                    handleUnclaim();
-                  }}
-                  className="outline outline-2 shadow-md rounded-md px-2 py-1.5 m-2"
-                >
-                  i don&apos;t want to bring {name} anymore
-                </button>
-              </motion.div>
+                i don&apos;t want to bring {name} anymore
+              </button>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
