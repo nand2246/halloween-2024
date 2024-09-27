@@ -9,13 +9,19 @@ datasource db {
 }
 
 model Ingredient {
-    id        String  @id @default(uuid())
-    name      String  @unique
+    id        String   @id @default(uuid())
+    name      String   @unique
     color     String
-    textColor String?
-    link      String?
+    whiteText Boolean?
+    link      String
     amount    String
     volunteer String?
+}
+
+model CustomIngredient {
+    id        String @id @default(uuid())
+    name      String
+    volunteer String
 }
 
 model Attendee {

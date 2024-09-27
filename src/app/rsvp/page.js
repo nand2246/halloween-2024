@@ -169,7 +169,8 @@ export default function RSVP() {
             the die
           </strong>
         </div>
-        <div>→ roll a die to see how many shots you take</div>
+        <div className="text-xl pt-2">{`(we will roll a die to see how many shots you take)`}</div>
+        <div className="text-lg">{`(maybe not 6 tho lol)`}</div>
         <div className="text-3xl font-normal pt-10 pb-3">
           don&apos;t know what to wear?
         </div>

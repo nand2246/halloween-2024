@@ -4,25 +4,9 @@ import { useState } from "react";
 
 const cocktails = [
   {
-    name: "jack o' spice",
-    ingredients: ["vodka", "pumpkin spice creamer", "kahlúa", "graham cracker"],
-    color: "#eaac5b",
-  },
-  {
     name: "blood shot",
-    ingredients: ["whisky", "sour apple schnapps", "cranberry juice"],
-    color: "#98292e",
-  },
-  {
-    name: "witches brew",
-    ingredients: [
-      "vodka",
-      "limes",
-      "seltzer water",
-      "midori melon liqueur",
-      "coconut water",
-    ],
-    color: "#8ace00",
+    ingredients: ["vodka", "jello"],
+    color: "#C93434",
   },
   {
     name: "black widow",
@@ -36,11 +20,33 @@ const cocktails = [
       "sparkling water",
     ],
     color: "#2a1115",
-    textColor: "white",
+    whiteText: true,
+  },
+  {
+    name: "witches brew",
+    ingredients: [
+      "vodka",
+      "limes",
+      "seltzer water",
+      "midori melon liqueur",
+      "coconut water",
+    ],
+    color: "#8ace00",
+  },
+  {
+    name: "apple elixir",
+    ingredients: ["whisky", "sour apple schnapps", "cranberry juice"],
+    color: "#8b0202",
+    whiteText: true,
+  },
+  {
+    name: "spiced apple punch",
+    ingredients: ["whisky", "sour apple schnapps", "cranberry juice"],
+    color: "#DA995F",
   },
 ];
 
-function CocktailCard({ name, ingredients, color, textColor, index }) {
+function CocktailCard({ name, ingredients, color, whiteText, index }) {
   const [show, setShow] = useState(false);
 
   return (
@@ -50,7 +56,7 @@ function CocktailCard({ name, ingredients, color, textColor, index }) {
       className={`w-full mb-8 p-4 outline outline-2 rounded-md text-center`}
       style={{
         backgroundColor: color,
-        color: textColor ? textColor : "inherit",
+        color: whiteText ? "white" : "inherit",
       }}
     >
       <div className="text-center text-4xl sm:text-5xl my-8 font-normal">
@@ -142,7 +148,7 @@ export default function Cocktails() {
             name={cocktail.name}
             ingredients={cocktail.ingredients}
             color={cocktail.color}
-            textColor={cocktail.textColor ? cocktail.textColor : undefined}
+            whiteText={cocktail.whiteText}
             index={index + 1}
           />
         ))}

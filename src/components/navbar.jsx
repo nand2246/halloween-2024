@@ -6,10 +6,10 @@ import Link from "next/link";
 
 const links = [
   { path: "/", text: "home" },
+  { path: "/rsvp", text: "rsvp" },
   { path: "/cocktails", text: "cocktails" },
   { path: "/volunteer", text: "volunteer" },
   { path: "/costumes", text: "costume ideas" },
-  { path: "/rsvp", text: "rsvp" },
 ];
 
 export default function NavBar() {
@@ -37,6 +37,7 @@ export default function NavBar() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="md:text-base lg:text-2xl mx-1 p-1"
+        onClick={() => setIsMenuOpen(false)}
       >
         <Link href={link.path}>{link.text}</Link>
       </motion.button>
