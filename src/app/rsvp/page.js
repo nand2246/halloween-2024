@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { submitRSVP } from "./actions";
+import Image from "next/image";
 
 export default function RSVP() {
   const [showForm, setShowForm] = useState(false);
@@ -201,6 +202,18 @@ export default function RSVP() {
             width="100%"
             height="352"
           ></iframe>
+        </div>
+        <div className="text-3xl font-normal pt-10 pb-3">party poster:</div>
+        <div>
+          <Image
+            src="/poster.png"
+            alt="poster image"
+            priority={true}
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="m-auto w-auto bottom-0 max-h-[80vh] max-w-[90vw] z-40"
+          />
         </div>
       </motion.div>
       <RSVPModal />
