@@ -1,4 +1,4 @@
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/NavBar1";
 import localFont from "next/font/local";
 import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
